@@ -5,9 +5,9 @@ import lombok.Data;
 
 @Entity
 @Data
-public class Stock {
+public class Existencia {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Integer idStock;
+    Integer idExistencia;
     Double existencia;
 }

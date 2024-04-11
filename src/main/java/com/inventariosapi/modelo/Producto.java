@@ -1,9 +1,6 @@
 package com.inventariosapi.modelo;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -19,6 +16,10 @@ public class Producto {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Integer idProducto;
     String descripcion;
-    Double precio;
-    Integer existencia;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "id_precio", referencedColumnName = "idPrecio")
+    private Precio precio;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "id_existencia", referencedColumnName = "idExistencia")
+    private Existencia existencia;
 }
